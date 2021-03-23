@@ -1,0 +1,73 @@
+.popup {
+  width: 100%;
+  height: 100%;
+  //background-color: black;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 8px;
+  border-color: rgba($color: #fffefe, $alpha: 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.shop-div {
+  width: auto;
+  height: 100%;
+  background: linear-gradient(50deg, #37c397 0%, #015031 100%);
+}
+
+.shop-img {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 30%;
+  width: auto;
+  height: 100%;
+  background-image: url(./sign-in.svg);
+  background-position: 35% 95%;
+  background-size: 250px;
+  background-repeat: no-repeat;
+  color: white;
+  h5 {
+    font-size: 2.5rem;
+    margin: 40px 30px 10px;
+  }
+  p {
+    font-size: 1.5rem;
+    margin: 10px 30px;
+    width: 80%;
+  }
+}
+
+.sign-in {
+  background-color: rgb(255, 255, 255);
+  flex: 1 1 70%;
+  width: auto;
+  height: 100%;
+  padding: 30px;
+}
+
+.sign-up-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
+}
+
+.sign-up-text-btn {
+  border: none;
+  border-width: 0px;
+  padding: 0px;
+  font-family: inherit;
+  outline: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn-div {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
