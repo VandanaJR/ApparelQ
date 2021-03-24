@@ -7,7 +7,7 @@ import SignUp from '../../components/sign-up/signup.component';
 const SignInandSignUp = (props)=> {
     //console.log(props)
     if(props.clickCheck===true && props.clickCheckforSignUp===false){
-        console.log("Sign in:",props)
+        //console.log("Sign in:",props)
         return(
             <div className="signin-signup">
                 <div className="container">
@@ -21,7 +21,7 @@ const SignInandSignUp = (props)=> {
         )
     }
     else if( props.clickCheck===true &&  props.clickCheckforSignUp===true ){
-        console.log("Sign up:")
+        //console.log("Sign up:")
         return(
             <div className="signin-signup">
                 <div className="container">

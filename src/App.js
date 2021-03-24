@@ -18,6 +18,7 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
   componentDidMount(){
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user=>{
+      console.log("User CHange:",user)
       if(user){
         const userRef= await createUserProfileDocument(user)
         userRef.onSnapshot( snapShot => {
@@ -27,7 +28,7 @@ class App extends React.Component {
               ...snapShot.data()
             }
             
-          },()=>{console.log(this.state)})
+          },()=>{console.log("Form db:",this.state)})
         })
       }
       else{

@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import  {ReactComponent as Logo} from './ApparelQ.svg';
 import SignInandSignUp from '../../pages/sign-in-and-sign-up-page/signinandsignuppage';
 import {auth} from '../../firebase/firebase.utils';
+
+
+ //Logo-color:#93C9B8
 class Header extends React.Component{
     constructor(props){
         super(props)
@@ -20,13 +23,12 @@ class Header extends React.Component{
         });
     }
     signUpPopup=()=>{
-        console.log("fired sign up")
-        //this.togglePopup()
+        //console.log("fired sign up")
         this.setState({clickCheckforSignUp: !this.state.clickCheckforSignUp})
         //console.log(this.state)
         
     }
-     //Logo-color:#93C9B8
+    
      render(){
         // console.log(this.props)
         return(
