@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
   //background-color: black;
-  border-radius: 30px;
+  //border-radius: 30px;
   border-style: solid;
   border-width: 8px;
   border-color: rgba($color: #fffefe, $alpha: 0.5);
@@ -20,8 +20,10 @@
 
 .shop-img {
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
-  flex: 1 1 30%;
+  flex: 1 1 40%;
   width: auto;
   height: 100%;
   background-image: url(./sign-in.svg);
@@ -29,20 +31,22 @@
   background-size: 250px;
   background-repeat: no-repeat;
   color: white;
+  margin-top: 70px;
+  margin-left: 30px;
   h5 {
-    font-size: 2.5rem;
-    margin: 40px 30px 10px;
+    font-size: 2.2rem;
+    width: 90%;
+    margin-bottom: 20px;
   }
   p {
-    font-size: 1.5rem;
-    margin: 10px 30px;
+    font-size: 1.3rem;
     width: 80%;
   }
 }
 
 .sign-in {
   background-color: rgb(255, 255, 255);
-  flex: 1 1 70%;
+  flex: 1 1 60%;
   width: auto;
   height: 100%;
   padding: 30px;
@@ -52,7 +56,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 
 .sign-up-text-btn {

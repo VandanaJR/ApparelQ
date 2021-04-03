@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import  {ReactComponent as Logo} from './ApparelQ.svg';
 import SignInandSignUp from '../../pages/sign-in-and-sign-up-page/signinandsignuppage';
 import {auth} from '../../firebase/firebase.utils';
+import CartIcon from '../cart-icon/carticon.component'
+import CartSideBar from '../../pages/cart-sidebar-page/cartsidebar.component'
 
-
+import {connect} from 'react-redux'
+import QuickViewPage from '../../pages/quick-view-page/quickviewpage.component';
  //Logo-color:#93C9B8
 class Header extends React.Component{
     constructor(props){
@@ -30,7 +33,7 @@ class Header extends React.Component{
     }
     
      render(){
-        // console.log(this.props)
+        console.log(this.props)
         return(
             <div className='header'>
                 <Link className= 'logo-container' to ='/'>
@@ -38,11 +41,10 @@ class Header extends React.Component{
                    
                 </Link>
                 <div className='options-container'>
-                    <Link className='option' to='/shop'>SHOP</Link>
-                    <Link className='option' to='/shop'>CONTACT</Link>
+                    {/* <Link className='option' to='/shop'>CONTACT</Link> */}
                    {
                        this.props.currentUser?
-                       <button className='sign-in-btn option' onClick= {()=>auth.signOut()}>SIGN-OUT</button>
+                       <button className='sign-in-btn option user-name' onClick= {()=>auth.signOut()}>{this.props.currentUser.displayName.charAt(0).toUpperCase()}</button>
                        :  <button className='sign-in-btn option' onClick={()=>{
                         this.togglePopup();
                         //console.log(this.props.currentUser)
@@ -55,10 +57,21 @@ class Header extends React.Component{
                         :null
                         
                     }
+                    <CartIcon></CartIcon>
                 </div>
+                {this.props.openCart ? <CartSideBar/> :  null  }
+                
+                {this.props.openQV ? <QuickViewPage/>:  null  }
             </div>
+            
         )
      }
    
 }
-export default Header;
+
+const mapStateToProps = state => ({
+    openQV:state.rootReducer.quickViewClick.openQV,
+    openCart : state.rootReducer.cartClicks.openCart,
+    currentUser:state.rootReducer.user
+})
+export default connect(mapStateToProps)(Header);
