@@ -1,6 +1,7 @@
 import React from 'react';
 import {Switch , Route } from 'react-router-dom';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css'
 import HomePage from './pages/home-page/homepage';
 import ShopPageForHats from './pages/shop-page-hats/shoppagehats';
 import ShopPageForSneakers from './pages/shop-page-sneakers/shoppagesneakers';

@@ -2,7 +2,7 @@ import React from 'react';
 import CustomButton from '../custom-button/custombutton.componet';
 import './collectionitem.styles.scss';
 import { useDispatch } from 'react-redux'
-import {openQVToggle} from '../../state/ui-slice/quickView.ui'
+import {openQVToggle,trackItem} from '../../state/ui-slice/quickView.ui'
 
 const CollectionItem = (props)=>{
     const dispatch = useDispatch();
@@ -21,7 +21,10 @@ const CollectionItem = (props)=>{
             </div>
             </div>
            
-            <CustomButton  className= "custom-button"  inverted handleClick={()=>dispatch(openQVToggle())} >QUICK VIEW</CustomButton>
+            <CustomButton  className= "custom-button"  inverted handleClick={()=>{
+                dispatch(openQVToggle())
+                dispatch(trackItem({itemDetails:props.item}))
+                }} >QUICK VIEW</CustomButton>
         </div>
     )
 }
