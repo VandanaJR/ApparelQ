@@ -11,6 +11,7 @@ const slice = createSlice(
             openCartToggle: (state)=> {
                 const value = state.openCart
                 state.openCart = !value
+                console.log("Cart opened or closed")
             },
         }
     }

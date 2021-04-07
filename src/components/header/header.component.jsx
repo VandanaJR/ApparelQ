@@ -6,34 +6,25 @@ import SignInandSignUp from '../../pages/sign-in-and-sign-up-page/signinandsignu
 import {auth} from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/carticon.component'
 import CartSideBar from '../../pages/cart-sidebar-page/cartsidebar.component'
+import {signInToggle} from '../../state/ui-slice/signIn-Up.ui'
+import useDisableBodyScroll from '../body-scroll/bodyscroll.component'
 
-import {connect} from 'react-redux'
+
+import {useDispatch, useSelector} from 'react-redux'
 import QuickViewPage from '../../pages/quick-view-page/quickviewpage.component';
  //Logo-color:#93C9B8
-class Header extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-            clickCheck:false,
-            clickCheckforSignUp:false
+const Header =()=>{
+        const dispatch = useDispatch()
+        const openQV = useSelector(state =>state.rootReducer.quickViewClick.openQV)
+        const openCart = useSelector(state =>state.rootReducer.cartClicks.openCart)
+        const currentUser = useSelector(state =>state.rootReducer.user)
+        const signIn = useSelector(state =>state.rootReducer.signInUpPopup.signIn) 
+        useDisableBodyScroll(signIn || openCart || openQV)
+        //const signUp = useSelector(state =>state.rootReducer.signInUpPopup.signUp) 
+        // console.log("signIn:",signIn)
+        // console.log("signUp:",signUp)
+       
 
-        }
-    }
-    togglePopup=()=> {
-        this.setState({clickCheck:false,clickCheckforSignUp:false})
-        this.setState({
-            clickCheck: !this.state.clickCheck
-        });
-    }
-    signUpPopup=()=>{
-        //console.log("fired sign up")
-        this.setState({clickCheckforSignUp: !this.state.clickCheckforSignUp})
-        //console.log(this.state)
-        
-    }
-    
-     render(){
-        //console.log(this.props)
         return(
             <div className='header'>
                 <Link className= 'logo-container' to ='/'>
@@ -43,35 +34,30 @@ class Header extends React.Component{
                 <div className='options-container'>
                     {/* <Link className='option' to='/shop'>CONTACT</Link> */}
                    {
-                       this.props.currentUser?
-                       <button className='sign-in-btn option user-name' onClick= {()=>auth.signOut()}>{this.props.currentUser.displayName.charAt(0).toUpperCase()}</button>
-                       :  <button className='sign-in-btn option' onClick={()=>{
-                        this.togglePopup();
-                        //console.log(this.props.currentUser)
-                        }
-                    } >SIGN-IN</button>
+                       currentUser?
+                       <button className='sign-in-btn option user-name' onClick= {()=>auth.signOut()}>{currentUser.displayName.charAt(0).toUpperCase()}</button>
+                       :  <button className='sign-in-btn option' onClick={()=>dispatch(signInToggle())}>SIGN-IN</button>
                    }
                     {
-                        this.state.clickCheck ?
-                        <SignInandSignUp closePopup={this.togglePopup} signUpPopup={this.signUpPopup} {...this.state}/>
+                        signIn ?
+                        <SignInandSignUp />
                         :null
                         
                     }
                     <CartIcon></CartIcon>
                 </div>
-                {this.props.openCart ? <CartSideBar/> :  null  }
+                {openCart ? <CartSideBar/> :  null  }
                 
-                {this.props.openQV ? <QuickViewPage/>:  null  }
+                {openQV ? <QuickViewPage/>:  null  }
             </div>
             
         )
-     }
-   
+    
 }
 
-const mapStateToProps = state => ({
-    openQV:state.rootReducer.quickViewClick.openQV,
-    openCart : state.rootReducer.cartClicks.openCart,
-    currentUser:state.rootReducer.user
-})
-export default connect(mapStateToProps)(Header);
+
+export default Header;
+
+
+
+

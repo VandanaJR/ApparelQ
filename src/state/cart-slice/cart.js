@@ -10,12 +10,12 @@ const slice = createSlice(
         },
         reducers:{
             addCartItem: (state,action)=> {
-              
-                    state.cartItems.push({...action.payload.item,...action.payload.quantity,...action.payload.addClicked})
+              state.cartItems.push({...action.payload.item,...action.payload.quantity,...action.payload.addClicked})
+              console.log("Item added!")
                 },
             inCartfromQVPage : (state,action)=>{
                 const existingInCart = state.cartItems.findIndex(cartItem => cartItem.id ===  action.payload.id)
-                console.log(existingInCart)
+                //console.log(existingInCart)
                 existingInCart!==-1 ? state.existsInCartQVPage=true : state.existsInCartQVPage=false
             },
 

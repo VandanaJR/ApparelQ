@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import QuickView from '../../components/quick-view/quickview.component'
 import './quickviewpage.styles.scss'
 
@@ -10,7 +10,7 @@ import { useSelector,useDispatch } from 'react-redux'
 const QuickViewPage =() =>{
     const dispatch = useDispatch();
     const qvDetails = useSelector(state => state.rootReducer.quickViewClick.itemDetails)
-    console.log(qvDetails.id)
+    //console.log(qvDetails.id)
     dispatch(inCartfromQVPage(qvDetails))
     dispatch(inCartfromQV(false))
     return(

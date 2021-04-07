@@ -3,14 +3,19 @@ import { useState } from "react";
 import './cartdropdown.styles.scss'
 import CustomButton from '../custom-button/custombutton.componet'
 import {openCartToggle} from '../../state/ui-slice/cart.ui'
-import { useDispatch } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import CartItem from '../cart-item/cartitem.component';
+import useDisableBodyScroll from '../body-scroll/bodyscroll.component'
 
 const  CartDropdown= ()=>{
-   
+       
         const [isMounted, setIsMounted] = useState(false);
         const [showDiv, setShowDiv] = useState(false);
         //console.log(isMounted, setIsMounted,showDiv, setShowDiv)
+        const cartItems = useSelector(state => state.rootReducer.cart.cartItems)
+        const openCart = useSelector(state => state.rootReducer.cartClicks.openCart)
+        useDisableBodyScroll(openCart)
+        //console.log(cartItems)
         const mountedStyle = {
             animation: "slide-in 250ms ease-in"
           };
@@ -32,12 +37,15 @@ const  CartDropdown= ()=>{
                     <h1>YOUR CART</h1>
                     <span onClick={()=>{
                         setIsMounted(!isMounted);
+                        
                         if (!showDiv) 
                         setShowDiv(true)
                         setTimeout(()=>dispatch(openCartToggle()),270)
                         }}>X</span>
                 </div>
                 <div className="cart-items">
+                 { cartItems.map(cartItem=>(<CartItem key={cartItem.id} item={cartItem}></CartItem>))}
+                  
                 </div>
          
     

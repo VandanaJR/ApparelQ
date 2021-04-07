@@ -20,6 +20,6 @@ const slice = createSlice(
     }
 )
 
-console.log(slice)
+//console.log(slice)
 export const{openQVToggle,trackItem} = slice.actions
 export default slice.reducer

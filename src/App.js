@@ -11,6 +11,7 @@ import ShopPageForWomen from './pages/shop-page-women/shoppagewomen'
 import Header from './components/header/header.component';
 import {auth,createUserProfileDocument}  from './firebase/firebase.utils';
 
+
 //STORE IMPORTS
 import {setCurrentUser} from './state/user-slice/user'
 import {connect} from 'react-redux'
@@ -46,7 +47,7 @@ class App extends React.Component {
     this.unsubscribeFromAuth()
   }
   render(){
-    console.log("From store:",this.props.currentUser)
+    //console.log("From store:",this.props.currentUser)
     return (
       <div>
         <Header currentUser={this.props.currentUser}/>

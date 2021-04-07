@@ -34,7 +34,7 @@ const QuickView = (props) =>{
     const qvExistsCheck = useSelector(state => state.rootReducer.cart.existsInCartQV)
     const qvPageExistsCheck=useSelector(state => state.rootReducer.cart.existsInCartQVPage)
     
-    console.log("Item exists in cart:",qvPageExistsCheck)
+    //console.log("Item exists in cart:",qvPageExistsCheck)
     const handleClick =()=> {
         if(!qvPageExistsCheck ){
             dispatch(addCartItem({item:itemDetails,quantity:{quantity}}))
@@ -134,7 +134,6 @@ const QuickView = (props) =>{
                         <div className="button">{ 
                         qvExistsCheck || qvPageExistsCheck ?
                         <CustomButton handleClick={()=>{
-                            handleClick()
                             dispatch(openQVToggle())
                             dispatch(openCartToggle())
                             }

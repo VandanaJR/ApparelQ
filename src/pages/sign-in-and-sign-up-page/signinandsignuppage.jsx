@@ -2,32 +2,42 @@ import React from 'react';
 import './signinandsignuppage.scss';
 import SignIn from '../../components/sign-in/signin.component';
 import SignUp from '../../components/sign-up/signup.component';
+import {useDispatch, useSelector} from 'react-redux'
+import {signInToggle,signUpToggle} from '../../state/ui-slice/signIn-Up.ui'
+import useDisableBodyScroll from '../../components/body-scroll/bodyscroll.component'
 
+const SignInandSignUp = ()=> {
 
-const SignInandSignUp = (props)=> {
-    //console.log(props)
-    if(props.clickCheck===true && props.clickCheckforSignUp===false){
-        //console.log("Sign in:",props)
+    const dispatch = useDispatch()
+    const signIn = useSelector(state =>state.rootReducer.signInUpPopup.signIn) 
+    const signUp = useSelector(state =>state.rootReducer.signInUpPopup.signUp) 
+    const signInUp = signIn || signUp
+    useDisableBodyScroll(signInUp)
+
+    if(signIn===true && signUp===false){
         return(
             <div className="signin-signup">
                 <div className="container">
-                    <SignIn {...props}/> 
+                    <SignIn closePopup={()=>dispatch(signInToggle())} signUpPopup={()=>dispatch(signUpToggle())} /> 
                     <div className="close">
-                        <button className="close-button"  type="button" onClick={props.closePopup} >X</button>
+                        <button className="close-button"  type="button" 
+                        onClick={()=>dispatch(signInToggle())} 
+                        >X</button>
                     </div>
                 </div>
               
             </div>
         )
     }
-    else if( props.clickCheck===true &&  props.clickCheckforSignUp===true ){
-        //console.log("Sign up:")
+    else if( signIn===true &&  signUp===true ){
         return(
             <div className="signin-signup">
                 <div className="container">
-                    <SignUp {...props}/> 
+                    <SignUp closePopup={()=>dispatch(signInToggle())} signUpPopup={()=>dispatch(signUpToggle())} /> 
                     <div className="close">
-                        <button className="close-button"  type="button" onClick={props.closePopup} >X</button>
+                        <button className="close-button"  type="button" 
+                       onClick={()=>dispatch(signInToggle())} 
+                        >X</button>
                     </div>
                 </div>
               
