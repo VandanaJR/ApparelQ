@@ -29,7 +29,6 @@ const Header =()=>{
             <div className='header'>
                 <Link className= 'logo-container' to ='/'>
                     <Logo className='logo'></Logo>
-                   
                 </Link>
                 <div className='options-container'>
                     {/* <Link className='option' to='/shop'>CONTACT</Link> */}

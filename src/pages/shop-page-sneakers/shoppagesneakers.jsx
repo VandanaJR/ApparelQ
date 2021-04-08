@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 const ShopPageForSneakers= ()=>{
     const shopData = useSelector(state => state.rootReducer.shopData)
-    console.log(shopData[1])
+    //console.log(shopData[1])
     const { title,items} = shopData[1]
 
     

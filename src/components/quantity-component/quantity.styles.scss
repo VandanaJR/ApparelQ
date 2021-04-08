@@ -24,17 +24,15 @@ $modifier--text-color: rgb(29, 28, 28);
   padding: 0.7rem;
   width: 3rem;
   font-size: 1.2rem;
-
-  background: $color--primary;
-  color: $modifier--text-color;
-  border: $border;
+  background-color: white;
+  border: 1px solid rgba(95, 95, 95, 0.555);
   text-align: center;
   text-shadow: 0 1px 0 rgba(#fff, 0.6);
 
   cursor: pointer;
 
   &:hover {
-    background: darken($color--primary, 10%);
+    background: #93c9b83b;
     color: darken($modifier--text-color, 20%);
   }
 
@@ -48,12 +46,12 @@ $modifier--text-color: rgb(29, 28, 28);
 }
 
 #{$block}__screen {
-  width: 4rem;
+  width: 3rem;
   padding: 0.7rem;
   font-size: 1.2rem;
-
+  background: $color--primary;
   border: 0;
-  border-top: $border;
-  border-bottom: $border;
+  border-top: 1px solid rgba(95, 95, 95, 0.555);
+  border-bottom: 1px solid rgba(95, 95, 95, 0.555);
   text-align: center;
 }

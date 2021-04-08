@@ -22,7 +22,7 @@ SwiperCore.use([Navigation,Controller,Thumbs,Pagination]);
 
 
 
-const QuickView = (props) =>{
+const QuickView = () =>{
     const dispatch = useDispatch()
 
     const itemDetails = useSelector(state => state.rootReducer.quickViewClick.itemDetails)
@@ -137,7 +137,7 @@ const QuickView = (props) =>{
                             dispatch(openQVToggle())
                             dispatch(openCartToggle())
                             }
-                        }>Go to cart</CustomButton>:
+                        } isGoogleSignIn>Go to cart</CustomButton>:
                         <CustomButton handleClick={handleClick}>Add to cart</CustomButton>
                         }</div>
                     

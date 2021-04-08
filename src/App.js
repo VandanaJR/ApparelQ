@@ -8,6 +8,7 @@ import ShopPageForSneakers from './pages/shop-page-sneakers/shoppagesneakers';
 import ShopPageForJackets from './pages/shop-page-jackets/shoppagejackets'
 import ShopPageForMen from './pages/shop-page-men/shoppagemen'
 import ShopPageForWomen from './pages/shop-page-women/shoppagewomen'
+import CheckOutPage from './pages/checkout-page/checkoutpage'
 import Header from './components/header/header.component';
 import {auth,createUserProfileDocument}  from './firebase/firebase.utils';
 
@@ -59,6 +60,7 @@ class App extends React.Component {
         <Route exact path='/shop/jackets' component={ShopPageForJackets}/>
         <Route exact path='/shop/womens' component={ShopPageForWomen}/>
         <Route exact path='/shop/mens' component={ShopPageForMen}/>
+        <Route exact path='/checkout' component={CheckOutPage}/>
         </Switch>
         
       </div>

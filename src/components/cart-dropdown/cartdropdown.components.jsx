@@ -6,8 +6,9 @@ import {openCartToggle} from '../../state/ui-slice/cart.ui'
 import { useDispatch, useSelector } from 'react-redux'
 import CartItem from '../cart-item/cartitem.component';
 import useDisableBodyScroll from '../body-scroll/bodyscroll.component'
+import { withRouter } from 'react-router-dom'
 
-const  CartDropdown= ()=>{
+const  CartDropdown= (history)=>{
        
         const [isMounted, setIsMounted] = useState(false);
         const [showDiv, setShowDiv] = useState(false);
@@ -15,7 +16,7 @@ const  CartDropdown= ()=>{
         const cartItems = useSelector(state => state.rootReducer.cart.cartItems)
         const openCart = useSelector(state => state.rootReducer.cartClicks.openCart)
         useDisableBodyScroll(openCart)
-        //console.log(cartItems)
+        //console.log(history)
         const mountedStyle = {
             animation: "slide-in 250ms ease-in"
           };
@@ -26,6 +27,7 @@ const  CartDropdown= ()=>{
        
     
         const dispatch = useDispatch()
+        
         return(
        
             <div  className="cart-dropdown" 
@@ -44,12 +46,14 @@ const  CartDropdown= ()=>{
                         }}>X</span>
                 </div>
                 <div className="cart-items">
-                 { cartItems.map(cartItem=>(<CartItem key={cartItem.id} item={cartItem}></CartItem>))}
+                 { cartItems.length?
+                 (cartItems.map(cartItem=>(<CartItem key={cartItem.id} item={cartItem}></CartItem>))):
+                 (<span className="empty-cart" >Your cart is empty.</span>)}
                   
                 </div>
          
     
-                <CustomButton >GO TO CHECKOUT</CustomButton>
+                <CustomButton history={history} routeButton >GO TO CHECKOUT</CustomButton>
             </div>
         )
     
@@ -59,4 +63,4 @@ const  CartDropdown= ()=>{
 
 
 
-  export default CartDropdown
+  export default withRouter(CartDropdown)

@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
+import {createSelector} from 'reselect'
 
 const slice = createSlice(
     {
@@ -6,12 +7,14 @@ const slice = createSlice(
         initialState:{
             cartItems:[],
             existsInCartQVPage:false,
-            existsInCartQV:false
+            existsInCartQV:false,
+            totalQ:0
         },
         reducers:{
             addCartItem: (state,action)=> {
               state.cartItems.push({...action.payload.item,...action.payload.quantity,...action.payload.addClicked})
-              console.log("Item added!")
+              state.totalQ = totalQuantity(state)
+              console.log("Item added!","  Total:",state.totalQ )
                 },
             inCartfromQVPage : (state,action)=>{
                 const existingInCart = state.cartItems.findIndex(cartItem => cartItem.id ===  action.payload.id)
@@ -20,8 +23,6 @@ const slice = createSlice(
             },
 
             inCartfromQV: (state,action)=>{
-               // const value =state.existsInCartQV
-                //state.existsInCartQV = !value
                 state.existsInCartQV = action.payload
             }
             
@@ -29,22 +30,10 @@ const slice = createSlice(
     }
 )
 
-//Util function
-// addCartItem: (state,action)=> {
-//     // state.cartItems.push(action.payload.item)
-//     const existingCartItem = state.cartItems.findIndex(cartItem => cartItem.id ===  action.payload.item.id)
-//     //console.log(existingCartItem)
-//     if(!existingCartItem){
-//         state.cartItems[existingCartItem].quantity++
-//         //console.log("quantity:",state.cartItems[existingCartItem].quantity)
-//     }
-//     else{
-//         state.cartItems.push({...action.payload.item,quantity:1})
-//     }
-   
-// }
-
-
-//console.log(slice)
 export const{addCartItem,inCartfromQVPage,inCartfromQV} = slice.actions
 export default slice.reducer
+
+export const totalQuantity = createSelector(
+    state=>  state.cartItems,
+    cartItems=>  cartItems.reduce((accumulatedQuantity,cartItem)=>accumulatedQuantity+cartItem.quantity,0)
+)
