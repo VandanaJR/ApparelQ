@@ -22,6 +22,8 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      height: 100%;
+
       .checkout-item-image {
         //background-color: rgb(93, 57, 36);
         width: 50%;
@@ -30,9 +32,21 @@
         background-position: center;
         background-repeat: no-repeat;
       }
-      .description {
-        font-size: 1.3rem;
+      .item-details {
+        height: 100%;
         display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-left: 15px;
+        .description {
+          font-size: 1.3rem;
+          display: flex;
+        }
+        .size {
+          font-size: 1.1rem;
+          padding-top: 8px;
+        }
       }
     }
     .price-container {

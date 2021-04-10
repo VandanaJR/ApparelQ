@@ -1,11 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit'
-
+import {createSelector} from 'reselect'
 
 const slice = createSlice(
     {
         name:"shopData",
-        initialState:[
-            {
+        initialState:{
+          collections:{
+            hats:{
               id: 1,
               title: 'Hats',
               routeName: 'hats',
@@ -76,7 +77,7 @@ const slice = createSlice(
                 }
               ]
             },
-            {
+            sneakers:{
               id: 2,
               title: 'Sneakers',
               routeName: 'sneakers',
@@ -147,7 +148,7 @@ const slice = createSlice(
                 }
               ]
             },
-            {
+            jackets:{
               id: 3,
               title: 'Jackets',
               routeName: 'jackets',
@@ -216,7 +217,7 @@ const slice = createSlice(
                 }
               ]
             },
-            {
+            womens:{
               id: 4,
               title: 'Womens',
               routeName: 'womens',
@@ -288,7 +289,7 @@ const slice = createSlice(
                 }
               ]
             },
-            {
+            mens:{
               id: 5,
               title: 'Mens',
               routeName: 'mens',
@@ -359,10 +360,18 @@ const slice = createSlice(
                 },
               ]
             }
-          ],
+          }
+        },
         reducers:{}
     }
 )
 
 //console.log(slice)
 export default slice.reducer
+
+//SELECTORS
+
+export const selectCategory = (categoryUrlParam)=>createSelector(
+  state =>  state.collections,
+  collections => collections[categoryUrlParam]
+)

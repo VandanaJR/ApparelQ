@@ -20,10 +20,6 @@ const Header =()=>{
         const currentUser = useSelector(state =>state.rootReducer.user)
         const signIn = useSelector(state =>state.rootReducer.signInUpPopup.signIn) 
         useDisableBodyScroll(signIn || openCart || openQV)
-        //const signUp = useSelector(state =>state.rootReducer.signInUpPopup.signUp) 
-        // console.log("signIn:",signIn)
-        // console.log("signUp:",signUp)
-       
 
         return(
             <div className='header'>

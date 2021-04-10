@@ -1,30 +1,39 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import  './checkoutitem.styles.scss'
 import Quantity from '../quantity-component/quantity.component'
 import  {ReactComponent as DeleteButton} from './trash-solid.svg';
+import {removeItemFromCart,updateCartQuantity} from '../../state/cart-slice/cart'
+import {useDispatch } from 'react-redux'
 const CheckOutItem = (props)=>{
-    let [quantity,setCount] = useState(1)
-    console.log(props)
+    const dispatch = useDispatch()
+    const {id}=props.item
+    let [quantity,setCount] = useState(props.item.quantity)
+    useEffect(() => {dispatch(updateCartQuantity({quantity,id}))})
+    console.log(props.item.sizeValue)
     return(
         <div className="item">
             <div className="checkout-item-container">
            
            <div className="product-container">
                <div className="checkout-item-image" style={{backgroundImage: `url(${props.item.imageUrl_1})`}}/>
+               <div className="item-details">
                <span className="description">{props.item.name}</span>
+               <span className="size">{props.item.sizeValue}</span>
+               </div>
+               
            </div>
            <div className="price-container">
                 <span className="price">${props.item.price}</span>
            </div>
            <div className="quantity-container">
-                <Quantity handleClick={setCount}></Quantity>
+                <Quantity quantity={quantity} handleClick={setCount}></Quantity>
            </div>
            <div className="total-container">
-                <span className="total">$36</span>
+                <span className="total">${props.item.quantity*props.item.price}</span>
            </div>
         </div>
         <div className="delete">
-               <DeleteButton className="delete-icon"></DeleteButton>
+               <DeleteButton className="delete-icon" onClick={()=>dispatch(removeItemFromCart(props.item))}></DeleteButton>
            </div>
         </div>
         

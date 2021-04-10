@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import CustomButton from '../custom-button/custombutton.componet';
-import Quantity from '../quantity-component/quantity.component'
 import DropdownSelection from '../drop-down/dropdown.component'
 import './quickview.styles.scss'
 import { useSelector,useDispatch } from 'react-redux'
@@ -26,18 +25,21 @@ const QuickView = () =>{
     const dispatch = useDispatch()
 
     const itemDetails = useSelector(state => state.rootReducer.quickViewClick.itemDetails)
-    const {  imageUrl_1,imageUrl_2,imageUrl_3, name, price} = itemDetails
    
-    let [quantity,setCount] = useState(1)
+    const {  imageUrl_1,imageUrl_2,imageUrl_3, name, price} = itemDetails
+    
+    
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
+    const [size,setSize] = useState("")
+    console.log(size)
     const qvExistsCheck = useSelector(state => state.rootReducer.cart.existsInCartQV)
     const qvPageExistsCheck=useSelector(state => state.rootReducer.cart.existsInCartQVPage)
-    
-    //console.log("Item exists in cart:",qvPageExistsCheck)
+
+
     const handleClick =()=> {
         if(!qvPageExistsCheck ){
-            dispatch(addCartItem({item:itemDetails,quantity:{quantity}}))
+            dispatch(addCartItem({item:itemDetails,quantity:{quantity:1},size:{sizeValue:size}}))
             dispatch(inCartfromQV(true))
         }
         else{
@@ -127,10 +129,9 @@ const QuickView = () =>{
                     </div>
                     <div className="size">
                         <p>Size</p> 
-                        <DropdownSelection></DropdownSelection>
+                        <DropdownSelection size={size} sizeSelected={setSize}></DropdownSelection>
                     </div>
                     <div className="quantity-cart">
-                        <div className="quantity"> <Quantity  handleClick={setCount}></Quantity></div>
                         <div className="button">{ 
                         qvExistsCheck || qvPageExistsCheck ?
                         <CustomButton handleClick={()=>{

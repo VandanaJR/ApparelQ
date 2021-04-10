@@ -35,13 +35,30 @@ const sizeOptions = [
   
 ]
 
-const DropdownSelection = () => (
-  <Dropdown
+class  DropdownSelection extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      value:''
+    }
+  }
+  //console.log(value)
+  handleChange = (event,data)=>{
+    const {name,value}= data;
+    this.setState({[name]:value})
+    this.props.sizeSelected(value)
+  }
+  render(){
+    return(
+    <Dropdown
     placeholder='Choose an option'
     fluid
     selection
     options={sizeOptions}
-  />
-)
+    onChange= {this.handleChange}
+    name ="value"/>
+    )
+  }
+  }
 
 export default DropdownSelection

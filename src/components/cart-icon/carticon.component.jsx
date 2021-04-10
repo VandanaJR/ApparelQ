@@ -8,12 +8,12 @@ import {openCartToggle} from '../../state/ui-slice/cart.ui'
 
 const CartIcon = ()=>{
     const dispatch = useDispatch()
-    const totalQ = useSelector(state =>state.rootReducer.cart.totalQ)
+    const totalQuantity = useSelector(state =>state.rootReducer.cart.totalQuantity)
     
     return(
         <div className="cart-icon" onClick={() => dispatch(openCartToggle())}>
             <ShoppingIcon className="shopping-icon" />
-            <span className="item-count">{totalQ}</span>
+            <span className="item-count">{totalQuantity}</span>
         </div>
     )
 }

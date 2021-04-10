@@ -8,10 +8,10 @@
   .image {
     width: 35%;
     height: 100%;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    //box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
   }
   .item-details {
     display: flex;
