@@ -32,7 +32,7 @@ const QuickView = () =>{
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
     const [size,setSize] = useState("")
-    console.log(size)
+    //console.log(size)
     const qvExistsCheck = useSelector(state => state.rootReducer.cart.existsInCartQV)
     const qvPageExistsCheck=useSelector(state => state.rootReducer.cart.existsInCartQVPage)
 

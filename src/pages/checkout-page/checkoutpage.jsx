@@ -4,12 +4,14 @@ import  './checkout.styles.scss'
 import { useSelector} from 'react-redux'
 import CustomButton from '../../components/custom-button/custombutton.componet'
 import {cartTotal} from '../../state/cart-slice/cart'
+import StripeCheckoutButton from '../../components/stripe-button/stripebutton.component'
 
 const CheckOutPage = ()=>{
     const state = useSelector(state => state.rootReducer.cart)
     //console.log(state)
     const cartItems = useSelector(state => state.rootReducer.cart.cartItems) 
     //console.log(cartItems.length === 0)
+    let total =cartTotal(state)
     return(
         <div className="checkout-paynow-container">
             <div className="checkout-container">
@@ -36,9 +38,14 @@ const CheckOutPage = ()=>{
             </div>
         </div>
         <div className="pay-now">
-            <span>Cart Total:${cartTotal(state)}</span>
-            <CustomButton className="custom-button">PAY NOW</CustomButton>
+            <span>Cart Total:${total}</span>
+            <CustomButton className="custom-button"><StripeCheckoutButton className="stripe" price={total} ></StripeCheckoutButton><span className="pay">PAY NOW</span></CustomButton>
         </div>
+        <div className="test-card"><span>Please use the following test card for payments:<br/>
+        Card No: 4242 4242 4242 4242 - Exp: 01/22- CVV: 123<br/>
+        The email should be in valid format and the billing address can be any value.
+
+        </span></div>
         </div>
     )
 }

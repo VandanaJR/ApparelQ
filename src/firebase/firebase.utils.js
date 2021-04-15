@@ -42,10 +42,45 @@ const config = {
         })
       }
       catch(error){
-        console.log('error creating user:',error.message);
+        alert('error creating user:',error.message);
       }
     }
-    return userRef;
+    else{ return userRef;}
+   
+  }
+  
+export default firebase
+
+
+
+//Fetch collections from Firestore
+export const convertCollectionsFromFirebase= collections =>{
+  const convertedCollections = collections.docs.map(doc=>{
+    const {title,items}= doc.data()
+    return {
+      routeName : encodeURI(title.toLowerCase()),
+      id:doc.id,
+      title,
+      items
+    }
+  }) 
+  //console.log(convertedCollections)
+  return convertedCollections.reduce((accumulator,collections)=>{
+    accumulator[collections.title.toLowerCase()]=collections
+    return accumulator
+  },{})
+}
+
+// Firestore DB uploader
+export const addCollectionandDocs = async (collectionKey,objectToAdd)=>{
+  const collectionRef = firestore.collection(collectionKey)
+  const batch = firestore.batch()
+  let x
+  for(x in objectToAdd){
+    const {items,title}= objectToAdd[x]
+    const newDocRef =collectionRef.doc()
+    batch.set(newDocRef,{items,title})
   }
 
-export default firebase;
+  return await batch.commit()
+}

@@ -8,7 +8,7 @@ const CollectionPreview = ({match})=>{
     const state = useSelector(state => state.rootReducer.shopData)
     const categoryUrlParam = match.params.categoryId
     const category= selectCategory(categoryUrlParam)(state)
-    console.log(category)
+    //console.log(category)
     return(
         <div className='collection-preview'>
             <h1 className="title">{category.title.toUpperCase()}</h1>

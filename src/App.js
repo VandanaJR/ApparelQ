@@ -37,6 +37,9 @@ class App extends React.Component {
       else{
         setCurrentUser(user)
       }
+      //Firestore DB uploader
+      //addCollectionandDocs("collections",collectionsToAdd) // import from firestore.utils
+      
     })
   }
   componentWillUnmount(){
@@ -61,7 +64,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser:state.rootReducer.user
+  currentUser:state.rootReducer.user,
+  collectionsToAdd: state.rootReducer.shopData.collections
 })
 
 const mapDispatchToProps = dispatch => ({

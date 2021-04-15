@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './header.styles.scss';
 import { Link } from 'react-router-dom';
 import  {ReactComponent as Logo} from './ApparelQ.svg';
@@ -8,10 +8,11 @@ import CartIcon from '../cart-icon/carticon.component'
 import CartSideBar from '../../pages/cart-sidebar-page/cartsidebar.component'
 import {signInToggle} from '../../state/ui-slice/signIn-Up.ui'
 import useDisableBodyScroll from '../body-scroll/bodyscroll.component'
-
+import {firestore,convertCollectionsFromFirebase} from '../../firebase/firebase.utils'
 
 import {useDispatch, useSelector} from 'react-redux'
 import QuickViewPage from '../../pages/quick-view-page/quickviewpage.component';
+import {setShopData} from '../../state/shopData'
  //Logo-color:#93C9B8
 const Header =()=>{
         const dispatch = useDispatch()
@@ -20,6 +21,15 @@ const Header =()=>{
         const currentUser = useSelector(state =>state.rootReducer.user)
         const signIn = useSelector(state =>state.rootReducer.signInUpPopup.signIn) 
         useDisableBodyScroll(signIn || openCart || openQV)
+
+        useEffect(() => {
+            const collectionRef = firestore.collection('collections')
+            collectionRef.onSnapshot(async snapshot=>{
+                const convertedCollections= convertCollectionsFromFirebase(snapshot)
+                console.log(convertedCollections)
+                dispatch(setShopData(convertedCollections))
+                    }
+               )},[])
 
         return(
             <div className='header'>
