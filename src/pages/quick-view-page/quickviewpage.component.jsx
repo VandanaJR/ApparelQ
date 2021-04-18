@@ -16,10 +16,11 @@ const QuickViewPage =() =>{
     return(
         <div className="quick-view-page">
              <div className="container">
-             <QuickView ></QuickView>
+            
                 <div className="close-container">
                     <button className="cls-button"  type="button" onClick={()=>dispatch(openQVToggle())} >X</button>
                 </div>
+                <QuickView ></QuickView>
              </div>
            
         </div>

@@ -67,3 +67,41 @@
     transform: translateX(100%);
   }
 }
+
+@media screen and (max-width: 1025px) {
+  .cart-dropdown {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .cart-dropdown {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .cart-dropdown {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .cart-dropdown {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .cart-dropdown {
+    width: 90%;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .cart-dropdown {
+    button {
+      margin: 12px auto;
+    }
+  }
+}

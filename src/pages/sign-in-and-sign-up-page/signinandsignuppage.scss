@@ -10,7 +10,7 @@
   font-size: 100px;
   z-index: 2;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 .container {
@@ -18,23 +18,51 @@
   width: 50%;
   height: 70%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 .close {
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
+  height: max-content;
+  width: 100%;
+  text-align: end;
 }
 .close-button {
   font-size: 2rem;
   border: none;
   background-color: transparent;
   color: rgb(160, 158, 158);
-  padding: 0px 8px;
   cursor: pointer;
 
   &:hover {
     color: rgb(255, 255, 255);
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media screen and (max-height: 1000px) {
+  .container {
+    height: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .close-button {
+    font-size: 1.5rem;
   }
 }

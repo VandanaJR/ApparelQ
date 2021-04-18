@@ -4,15 +4,28 @@
   margin-bottom: 30px;
 
   .title {
+    width: 90%;
     font-size: 28px;
     margin-bottom: 25px;
-    margin-left: 20px;
+    margin: 20px auto;
+    text-align: center;
   }
 
   .preview {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media screen and(max-width:900px) {
+  .collection-preview {
+    .title {
+      font-size: 20px;
+      margin: 0 auto;
+    }
   }
 }

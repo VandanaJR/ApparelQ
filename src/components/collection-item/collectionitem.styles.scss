@@ -62,13 +62,44 @@
     color: white;
 
     .name {
-      width: 90%;
+      width: 60%;
       padding: 1px;
     }
 
     .price {
-      width: 10%;
+      width: 15%;
       padding: 1px;
+    }
+  }
+}
+
+@media screen and(max-width:1500px) {
+  .collection-item {
+    width: 25%;
+  }
+}
+
+@media screen and(max-width:1400px) {
+  .collection-item {
+    width: 28%;
+  }
+}
+
+@media screen and(max-width:1050px) {
+  .collection-item {
+    width: 40%;
+    .custom-button {
+      opacity: 1;
+      display: flex;
+    }
+  }
+}
+
+@media screen and(max-width:600px) {
+  .collection-item {
+    width: 100%;
+    .collection-footer {
+      font-size: 16px;
     }
   }
 }

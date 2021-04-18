@@ -16,25 +16,45 @@
     width: 60%;
     height: 80%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
   }
 }
 
 .close-container {
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
+  height: min-content;
+  width: 100%;
+  text-align: end;
 }
 .cls-button {
   font-size: 2rem;
   border: none;
   background-color: transparent;
   color: rgb(160, 158, 158);
-  padding: 0px 8px;
   cursor: pointer;
 
   &:hover {
     color: rgb(255, 255, 255);
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .quick-view-page {
+    .container {
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .quick-view-page {
+    .container {
+      height: 95%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cls-button {
+    font-size: 1.5rem;
   }
 }

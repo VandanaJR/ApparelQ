@@ -2,17 +2,19 @@ import React,{useEffect} from 'react';
 import './header.styles.scss';
 import { Link } from 'react-router-dom';
 import  {ReactComponent as Logo} from './ApparelQ.svg';
+import  {ReactComponent as LogoMobile} from './ApparelQMobile.svg';
 import SignInandSignUp from '../../pages/sign-in-and-sign-up-page/signinandsignuppage';
 import {auth} from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/carticon.component'
 import CartSideBar from '../../pages/cart-sidebar-page/cartsidebar.component'
 import {signInToggle} from '../../state/ui-slice/signIn-Up.ui'
 import useDisableBodyScroll from '../body-scroll/bodyscroll.component'
-import {firestore,convertCollectionsFromFirebase} from '../../firebase/firebase.utils'
+
 
 import {useDispatch, useSelector} from 'react-redux'
 import QuickViewPage from '../../pages/quick-view-page/quickviewpage.component';
-import {setShopData} from '../../state/shopData'
+import {fetchCollections} from '../../state/shopData'
+
  //Logo-color:#93C9B8
 const Header =()=>{
         const dispatch = useDispatch()
@@ -22,19 +24,24 @@ const Header =()=>{
         const signIn = useSelector(state =>state.rootReducer.signInUpPopup.signIn) 
         useDisableBodyScroll(signIn || openCart || openQV)
 
+        // useEffect(() => {
+        //     const collectionRef = firestore.collection('collections')
+        //     collectionRef.onSnapshot(async snapshot=>{
+        //         const convertedCollections= convertCollectionsFromFirebase(snapshot)
+        //         console.log(convertedCollections)
+        //         dispatch(setShopData(convertedCollections))
+        //             }
+        //        )},[])
+
         useEffect(() => {
-            const collectionRef = firestore.collection('collections')
-            collectionRef.onSnapshot(async snapshot=>{
-                const convertedCollections= convertCollectionsFromFirebase(snapshot)
-                console.log(convertedCollections)
-                dispatch(setShopData(convertedCollections))
-                    }
-               )},[])
+            dispatch(fetchCollections())
+        },[])
 
         return(
             <div className='header'>
                 <Link className= 'logo-container' to ='/'>
                     <Logo className='logo'></Logo>
+                    <LogoMobile className='logo-mobile'></LogoMobile>
                 </Link>
                 <div className='options-container'>
                     {/* <Link className='option' to='/shop'>CONTACT</Link> */}

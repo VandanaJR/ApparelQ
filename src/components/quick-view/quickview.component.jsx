@@ -63,21 +63,21 @@ const QuickView = () =>{
                     pagination={{ clickable: true }}
                     thumbs={{ swiper: thumbsSwiper }}
                    >
-                    <SwiperSlide ><div style={{
+                    <SwiperSlide ><div className="image-main"style={{
                             backgroundImage: `url(${imageUrl_1})`,
                             backgroundSize: `contain`,
                             backgroundPosition: `center`,
                             backgroundRepeat:`no-repeat`
 
                         }}></div></SwiperSlide>
-                    <SwiperSlide ><div style={{
+                    <SwiperSlide ><div className="image-main" style={{
                             backgroundImage: `url(${imageUrl_2})`,
                             backgroundSize: `contain`,
                             backgroundPosition: `center`,
                             backgroundRepeat:`no-repeat`
 
                         }}></div></SwiperSlide>
-                    <SwiperSlide ><div style={{
+                    <SwiperSlide ><div className="image-main" style={{
                             backgroundImage: `url(${imageUrl_3})`,
                             backgroundSize: `contain`,
                             backgroundPosition: `center`,

@@ -9,14 +9,14 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 
 const ShopPage = ({match})=>{
-    const collections = useSelector(state => state.rootReducer.shopData.collections)
-    if(collections){  
+    let status = useSelector(state => state.rootReducer.shopData.status)
+    if(status==="success"){  
         return(
         <div className="shop-page" >
         <Route  path={`${match.path}:categoryId`} component={CollectionPreview}/> 
         </div>
     )}
-    else{
+    else if(status==="loading"){
         
         return(
         <div className="shop-page" >
@@ -25,9 +25,18 @@ const ShopPage = ({match})=>{
             </div>
         
         </div>
-        )
+        )}
+
+        else if(status==="failed"){
         
-    }
+            return(
+            <div className="shop-page" >
+                <div className="spinner">
+                <h3>Something went wrong.</h3>
+                </div>
+            
+            </div>
+            )}
     
 }
 

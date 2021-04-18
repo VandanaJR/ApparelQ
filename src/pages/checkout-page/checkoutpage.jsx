@@ -14,6 +14,11 @@ const CheckOutPage = ()=>{
     let total =cartTotal(state)
     return(
         <div className="checkout-paynow-container">
+            <div className="test-card"><span>Please use the following test card for payments:<br/>
+        Card No: 4242 4242 4242 4242 - Exp: 01/22- CVV: 123<br/>
+        The email should be in valid format and the billing address can be any value.
+
+        </span></div>
             <div className="checkout-container">
             
             <div className="header-width">
@@ -39,13 +44,9 @@ const CheckOutPage = ()=>{
         </div>
         <div className="pay-now">
             <span>Cart Total:${total}</span>
-            <CustomButton className="custom-button"><StripeCheckoutButton className="stripe" price={total} ></StripeCheckoutButton><span className="pay">PAY NOW</span></CustomButton>
+            <div className="custom-button"><StripeCheckoutButton className="stripe" price={total} ></StripeCheckoutButton><span className="pay">PAY NOW</span></div>
         </div>
-        <div className="test-card"><span>Please use the following test card for payments:<br/>
-        Card No: 4242 4242 4242 4242 - Exp: 01/22- CVV: 123<br/>
-        The email should be in valid format and the billing address can be any value.
-
-        </span></div>
+        
         </div>
     )
 }

@@ -18,12 +18,13 @@ const SignInandSignUp = ()=> {
         return(
             <div className="signin-signup">
                 <div className="container">
-                    <SignIn closePopup={()=>dispatch(signInToggle())} signUpPopup={()=>dispatch(signUpToggle())} /> 
+                   
                     <div className="close">
                         <button className="close-button"  type="button" 
                         onClick={()=>dispatch(signInToggle())} 
                         >X</button>
                     </div>
+                    <SignIn closePopup={()=>dispatch(signInToggle())} signUpPopup={()=>dispatch(signUpToggle())} /> 
                 </div>
               
             </div>
@@ -33,12 +34,13 @@ const SignInandSignUp = ()=> {
         return(
             <div className="signin-signup">
                 <div className="container">
-                    <SignUp closePopup={()=>dispatch(signInToggle())} signUpPopup={()=>dispatch(signUpToggle())} /> 
+                   
                     <div className="close">
                         <button className="close-button"  type="button" 
                        onClick={()=>dispatch(signInToggle())} 
                         >X</button>
                     </div>
+                    <SignUp closePopup={()=>dispatch(signInToggle())} signUpPopup={()=>dispatch(signUpToggle())} /> 
                 </div>
               
             </div>

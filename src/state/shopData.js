@@ -1,15 +1,43 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import {createSelector} from 'reselect'
+import {firestore,convertCollectionsFromFirebase} from '../firebase/firebase.utils'
 
+export const fetchCollections = createAsyncThunk(
+  'shopData/fetchCollections',
+  async () => {
+    const collectionRef = firestore.collection('collections')
+    const collections = await  collectionRef.get().then(doc =>{
+    const convertedCollection=convertCollectionsFromFirebase(doc)
+    //console.log(convertedCollection)
+    return convertedCollection
+  })
+  //console.log(collections)
+  return collections
+
+  }
+)
+
+            
 const slice = createSlice(
     {
         name:"shopData",
         initialState:{
-          collections:null
+          collections:null,
+          status:"loading"
         },
-        reducers:{
-          setShopData: (state,action)=>{
+        reducers:{},
+        extraReducers: {
+          [fetchCollections.pending]: (state,action) => {
+            state.status = "loading"
+          },
+          [fetchCollections.fulfilled]: (state,action) => {
+            console.log(action.payload)
             state.collections = action.payload
+            state.status = "success"
+          },
+          [fetchCollections.rejected]: (state,action) => {
+            console.log(action.payload)
+            state.status = "failed"
           }
         }
     }

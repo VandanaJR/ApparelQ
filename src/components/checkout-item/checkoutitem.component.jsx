@@ -15,13 +15,13 @@ const CheckOutItem = (props)=>{
             <div className="checkout-item-container">
            
            <div className="product-container">
-               <div className="checkout-item-image" style={{backgroundImage: `url(${props.item.imageUrl_1})`}}/>
-               <div className="item-details">
-               <span className="description">{props.item.name}</span>
-               <span className="size">{props.item.sizeValue}</span>
-               </div>
-               
-           </div>
+                <div className="checkout-item-image" style={{backgroundImage: `url(${props.item.imageUrl_1})`}}/>
+                    <div className="item-details">
+                        <span className="description">{props.item.name}</span>
+                        <span className="size">{props.item.sizeValue}</span>
+                        <span className="cost">${props.item.price}</span>
+                    </div>
+                </div>
            <div className="price-container">
                 <span className="price">${props.item.price}</span>
            </div>
@@ -31,6 +31,18 @@ const CheckOutItem = (props)=>{
            <div className="total-container">
                 <span className="total">${props.item.quantity*props.item.price}</span>
            </div>
+           <div className="quantity-total-delete-mob">
+                    <div className="quantity-container">
+                            <Quantity quantity={quantity} handleClick={setCount}></Quantity>
+                    </div>
+                    <div className="total-container">
+                            <span className="total">${props.item.quantity*props.item.price}</span>
+                    </div>
+                    <div className="delete-mob">
+                        <DeleteButton className="delete-icon" onClick={()=>dispatch(removeItemFromCart(props.item))}></DeleteButton>
+                    </div>
+                    </div>
+                   
         </div>
         <div className="delete">
                <DeleteButton className="delete-icon" onClick={()=>dispatch(removeItemFromCart(props.item))}></DeleteButton>

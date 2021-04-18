@@ -1,7 +1,7 @@
 .custom-button {
   min-width: 165px;
   width: 80%;
-  height: 50px;
+  height: min-content;
   letter-spacing: 0.5px;
   line-height: 50px;
   padding: 0 35px 0 35px;
@@ -42,5 +42,18 @@
       color: black;
       border: 1px solid black;
     }
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .custom-button {
+    font-size: 11px;
+    padding: 0 15px 0 15px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .custom-button {
+    line-height: 30px;
   }
 }
