@@ -36,13 +36,17 @@ const slice = createSlice(
                 state.cartItems[index].quantity=action.payload.quantity
                 //console.log("reducer-quantity",state.cartItems[index].quantity)
                 state.totalQuantity = totalQuantity(state)
+            },
+            paymentSuccesfull: state =>{
+                state.cartItems=[]
+                state.totalQuantity= 0
             }
             
         }
     }
 )
 
-export const{addCartItem,inCartfromQVPage,inCartfromQV,removeItemFromCart,updateCartQuantity} = slice.actions
+export const{addCartItem,inCartfromQVPage,inCartfromQV,removeItemFromCart,updateCartQuantity,paymentSuccesfull} = slice.actions
 export default slice.reducer
 
 //SELECTORS

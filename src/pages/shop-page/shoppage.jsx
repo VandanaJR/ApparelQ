@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import './shoppage.scss';
 import CollectionPreview from '../../components/collection-preview/collectionpreview.component'
 import { Route } from 'react-router-dom';

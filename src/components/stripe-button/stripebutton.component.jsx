@@ -2,15 +2,16 @@ import React from 'react'
 import StripeCheckOut from 'react-stripe-checkout'
 
 
-const StripeCheckoutButton = ({price}) =>{
+const StripeCheckoutButton = ({price,setPaymentstatus,cartItems}) =>{
     const priceForStripe = price*100
     const publishableKey = 'pk_test_51IeiEUSBpnf6BKfq8gLqaeETbj5UJZsh5o0NnEIWjMXSsp8R9ZcW3DsGmKTpmDsSvniPkPXIZXFurIj7dztQo8Gs00ZmAaCisg'
 
     const onToken = token =>{
+        setPaymentstatus(1)
         console.log(token)
     }
-
-    return(
+    if(cartItems.length>0)
+    {return(
         <StripeCheckOut
         label = 'PAY NOW'
         name= 'ApparelQ Ltd.'
@@ -24,7 +25,10 @@ const StripeCheckoutButton = ({price}) =>{
         stripeKey={publishableKey}
 
         />
-    )
+    )}
+    else{
+        return null
+    }
 }
 
 export default StripeCheckoutButton

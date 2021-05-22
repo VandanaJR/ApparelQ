@@ -7,7 +7,6 @@
   width: 100%;
   height: 100%;
   background-color: rgba($color: #000000, $alpha: 0.7);
-  font-size: 100px;
   z-index: 2;
   display: flex;
   align-items: flex-start;
@@ -17,6 +16,7 @@
   position: relative;
   width: 50%;
   height: 70%;
+  margin: auto 0;
   display: flex;
   flex-direction: column;
 }
@@ -62,6 +62,10 @@
 }
 
 @media screen and (max-width: 500px) {
+  .container {
+    height: 95%;
+    margin-top: 5px;
+  }
   .close-button {
     font-size: 1.5rem;
   }

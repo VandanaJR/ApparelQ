@@ -18,3 +18,9 @@
     margin-bottom: 30px;
   }
 }
+
+@media screen and(min-width:3840px), (min-height: 1300px) {
+  .directory-menu {
+    height: 70vh;
+  }
+}

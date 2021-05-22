@@ -35,7 +35,7 @@ const Header =()=>{
 
         useEffect(() => {
             dispatch(fetchCollections())
-        },[])
+        },[dispatch])
 
         return(
             <div className='header'>
